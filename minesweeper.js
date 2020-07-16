@@ -5,64 +5,74 @@ var board = {
     cells: [{ 
       row: 0,
       col: 0,
-      isMine: 0,
-      hidden: 0 
+      isMine: true,
+      hidden: true 
     }, 
     { 
       row: 0,
       col: 1,
-      isMine: 0,
-      hidden: 0 
+      isMine: true,
+      hidden: true 
 
     }, 
     { 
       row: 0,
       col: 2,
-      isMine: 0,
-      hidden: 0  
+      isMine: false,
+      hidden: true  
     }, 
     { 
       row: 1,
       col: 0,
-      isMine: 0,
-      hidden: 0  
+      isMine: false,
+      hidden: true  
     },
     { 
       row: 1,
       col: 1,
-      isMine: 0,
-      hidden: 0  
+      isMine: true,
+      hidden: true  
     }, 
     { 
       row: 1,
       col: 2,
-      isMine: 0,
-      hidden: 0  
+      isMine: false,
+      hidden: true  
     }, 
     { 
       row: 2,
       col: 0,
-      isMine: 0,
-      hidden: 0  
+      isMine: true,
+      hidden: true  
     }, 
     { 
       row: 2,
       col: 1,
-      isMine: 0,
-      hidden: 0  
+      isMine: false,
+      hidden: true  
     },
     { 
       row: 2,
       col: 2,
-      isMine: 0,
-      hidden: 0 
+      isMine: false,
+      hidden: true 
     }]
 };
 
-function startGame () {
+function startGame (cells) {
+
+for (var i = 0; i < board.cells.length; i++) {
+   // call countSurroundingMines once for each cell in board.cells
+    countSurroundingMines(board.cells[i]); //for each iteration of the for loop, it will call the count surrounding mines function, for as long as the length of the board.cells array.
+   // assign the result of countSurroundingMines to a new property on each cell called surroundingMines
+  }
+  board.cells.surroundingMines = countSurroundingMines(cell);
+
   // Don't remove this function call: it makes the game work!
   lib.initBoard()
 }
+
+
 
 // Define this function to look for a win condition:
 //
@@ -84,5 +94,13 @@ function checkForWin () {
 // It will return cell objects in an array. You should loop through 
 // them, counting the number of times `cell.isMine` is true.
 function countSurroundingMines (cell) {
-}
+  var surrounding = lib.getSurroundingCells(cell.row, cell.col);
+  var count = 0;
+  for (var i = 0; i < surrounding.length; i++) {
+    if (cell.isMine === true) {
+      return count;
+  }
+  
 
+}
+}
