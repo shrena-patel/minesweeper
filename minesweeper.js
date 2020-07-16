@@ -61,13 +61,11 @@ var board = {
 
 function startGame (cells) {
 
-for (var i = 0; i < board.cells.length; i++) {
-   // call countSurroundingMines once for each cell in board.cells
-    countSurroundingMines(board.cells[i]); //for each iteration of the for loop, it will call the count surrounding mines function, for as long as the length of the board.cells array.
-   // assign the result of countSurroundingMines to a new property on each cell called surroundingMines
-  }
-  board.cells.surroundingMines = countSurroundingMines(cell);
-
+for (var i = 0; i < board.cells.length; i++) {                                  //for each iteration of the for loop, it will call the count surrounding mines function, for as long as the length of the board.cells array.
+  board.cells[i].surroundingMines = countSurroundingMines(board.cells[i])       //// assign the result of countSurroundingMines to a new property on each cell called surroundingMines
+}
+  console.log(board)
+  
   // Don't remove this function call: it makes the game work!
   lib.initBoard()
 }
@@ -97,10 +95,9 @@ function countSurroundingMines (cell) {
   var surrounding = lib.getSurroundingCells(cell.row, cell.col);
   var count = 0;
   for (var i = 0; i < surrounding.length; i++) {
-    if (cell.isMine === true) {
-      return count;
+    if (surrounding[i].isMine === true) {
+      count++
   }
-  
-
 }
+  return count;
 }
