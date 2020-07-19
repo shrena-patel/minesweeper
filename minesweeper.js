@@ -143,6 +143,8 @@ function checkForWin() {
       }
   }
   lib.displayMessage('You win!');
+  
+  
 }
 
 
@@ -164,3 +166,5 @@ function countSurroundingMines (cell) {
 }
   return count;
 }
+
+
